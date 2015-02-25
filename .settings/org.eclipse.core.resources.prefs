@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/com/jdbc/TestBatch.java=UTF-8
+encoding//src/com/jdbc/TestConnectionPool.java=UTF-8
+encoding//src/com/jdbc/TestDML.java=UTF-8
+encoding//src/com/jdbc/TestDML2.java=UTF-8
+encoding//src/com/jdbc/TestJDBC.java=UTF-8
+encoding//src/com/jdbc/TestPreparedStmt.java=UTF-8
+encoding//src/com/jdbc/TestTransaction.java=UTF-8

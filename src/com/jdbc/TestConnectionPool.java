@@ -1,0 +1,327 @@
+/**
+ * Proxy设计模式，代理人模式-----设计连接池Connection Pool
+ * 指实现类的接口和另外一个类是完全一样的。
+ */
+
+package com.jdbc;
+
+import java.sql.*;
+import java.util.*;
+import java.util.Date;
+
+
+public class TestConnectionPool {
+
+	//面向对象，List里面是自己设计的包装类。
+	//但是声明时用Connection，到时候多态实现即可。
+	List<Connection> connections;
+	
+	
+	void initialPool() {
+
+	}
+	
+	public Connection getConnection() {
+		//遍历哪一个not busy，就调用该connection
+		//if all busy, create a new connection.
+		return null;
+		
+	}
+	
+	//proxy模式实现的关键
+	class MyConnection implements Connection{
+		boolean isbusy;
+		Date starttime;
+		Connection conn;
+
+		@Override
+		public void clearWarnings() throws SQLException {
+			conn.clearWarnings();
+		}
+		@Override
+		public void close() throws SQLException {
+			isbusy = false;
+			
+		}
+		@Override
+		public void commit() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public boolean isWrapperFor(Class<?> iface) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public <T> T unwrap(Class<T> iface) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Array createArrayOf(String typeName, Object[] elements)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Blob createBlob() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Clob createClob() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public NClob createNClob() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public SQLXML createSQLXML() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Statement createStatement() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Statement createStatement(int resultSetType,
+				int resultSetConcurrency) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Statement createStatement(int resultSetType,
+				int resultSetConcurrency, int resultSetHoldability)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Struct createStruct(String typeName, Object[] attributes)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public boolean getAutoCommit() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public String getCatalog() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Properties getClientInfo() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public String getClientInfo(String name) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public int getHoldability() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		@Override
+		public DatabaseMetaData getMetaData() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public int getTransactionIsolation() throws SQLException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		@Override
+		public Map<String, Class<?>> getTypeMap() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public SQLWarning getWarnings() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public boolean isClosed() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public boolean isReadOnly() throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public boolean isValid(int timeout) throws SQLException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		@Override
+		public String nativeSQL(String sql) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public CallableStatement prepareCall(String sql) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public CallableStatement prepareCall(String sql, int resultSetType,
+				int resultSetConcurrency) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public CallableStatement prepareCall(String sql, int resultSetType,
+				int resultSetConcurrency, int resultSetHoldability)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql,
+				int autoGeneratedKeys) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql,
+				int[] columnIndexes) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql,
+				String[] columnNames) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql,
+				int resultSetType, int resultSetConcurrency)
+				throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public PreparedStatement prepareStatement(String sql,
+				int resultSetType, int resultSetConcurrency,
+				int resultSetHoldability) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void releaseSavepoint(Savepoint savepoint) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void rollback() throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void rollback(Savepoint savepoint) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setAutoCommit(boolean autoCommit) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setCatalog(String catalog) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setClientInfo(Properties properties)
+				throws SQLClientInfoException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setClientInfo(String name, String value)
+				throws SQLClientInfoException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setHoldability(int holdability) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setReadOnly(boolean readOnly) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public Savepoint setSavepoint() throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public Savepoint setSavepoint(String name) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public void setTransactionIsolation(int level) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+
+	
+	
+	//线程推荐方法，实现Runnable，而不是继承自Thread。
+	
+	/*
+	 * 守护进程DeamonThread,是监测每个Connection是否dead了。
+	 * 每隔一段时间，监测现在系统时间-开始时间>特定值。认为其dead，把它kill掉。
+	 */
+	
+	//连接池连接遍历要同步synchronized。---isbusy也要同步化。
+	
+	private class DeamonThread implements Runnable{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}
